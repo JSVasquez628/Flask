@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{%import 'macros.html' as macro%}
+{% block title %}
+    {{super()}}
+    Hola
+{%endblock%}
+
+{% block contenido %}
+
+{%if su_ip%}
+    <h1> Hola fue redireccionado a otra URL, su ip es: {{su_ip}}</h1>
+{%else%}
+    <a href="{{url_for('index')}}">Crear cookies</a>
+{%endif%}
+
+<ul>
+    {%for i in items%}
+        {#<li>{{(i)}}</li>#}
+        {{macro.render_items(i)}}
+    {%endfor%}
+</ul>
+{%endblock%}
